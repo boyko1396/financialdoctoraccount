@@ -1063,7 +1063,7 @@ svg,
   }
 }
 
-.u-input {
+.u-input, .selectbox_input {
   width: 100%;
   min-height: var(--input-height);
   padding: var(--input-padding-y) var(--input-padding-x);
@@ -1077,49 +1077,49 @@ svg,
   position: relative;
   transition: all 0.28s;
 }
-.u-input:hover {
+.u-input:hover, .selectbox_input:hover {
   text-decoration: none;
 }
-.u-input--icon-left {
+.u-input--icon-left, .selectbox_list_item, .selectbox_input {
   padding-left: 2.8rem;
 }
 @media (max-width: 991px) {
-  .u-input--icon-left {
+  .u-input--icon-left, .selectbox_list_item, .selectbox_input {
     padding-left: 2.6rem;
   }
 }
-.u-input--theme-dark-light {
+.u-input--theme-dark-light, .selectbox_input {
   background: transparent;
   color: #2C392D;
   border: solid rgba(44, 57, 45, 0.5);
   border-width: 0 0 2px;
 }
 @media (min-width: 1200px) {
-  .u-input--theme-dark-light:hover {
+  .u-input--theme-dark-light:hover, .selectbox_input:hover {
     border-color: #334435 !important;
     box-shadow: 0 1.4rem 1.2rem -1.2rem rgba(60, 78, 62, 0.3);
   }
 }
-.u-input--theme-dark-light:focus {
+.u-input--theme-dark-light:focus, .selectbox_input:focus {
   border-color: #334435 !important;
   box-shadow: 0 1.4rem 1.2rem -1.2rem rgba(60, 78, 62, 0.6) !important;
 }
-.u-input--theme-dark-light::-webkit-input-placeholder {
+.u-input--theme-dark-light::-webkit-input-placeholder, .selectbox_input::-webkit-input-placeholder {
   color: #6A7267;
 }
-.u-input--theme-dark-light:-ms-input-placeholder {
+.u-input--theme-dark-light:-ms-input-placeholder, .selectbox_input:-ms-input-placeholder {
   color: #6A7267;
 }
-.u-input--theme-dark-light::-ms-input-placeholder {
+.u-input--theme-dark-light::-ms-input-placeholder, .selectbox_input::-ms-input-placeholder {
   color: #6A7267;
 }
-.u-input--theme-dark-light::placeholder {
+.u-input--theme-dark-light::placeholder, .selectbox_input::placeholder {
   color: #6A7267;
 }
 .u-input--theme + .icon {
   color: #6A7267;
 }
-.u-input--size-md {
+.u-input--size-md, .selectbox_input {
   --input-height: 5rem;
   --input-padding-y: 1rem;
   --input-padding-x: 0;
@@ -1127,18 +1127,18 @@ svg,
   font-weight: 500;
 }
 @media (max-width: 991px) {
-  .u-input--size-md {
+  .u-input--size-md, .selectbox_input {
     --input-height: 4.4rem;
     --input-padding-y: .8rem;
     --input-font-size: 1.4rem;
   }
 }
-.u-input[type=date]::-webkit-inner-spin-button, .u-input[type=date]::-webkit-calendar-picker-indicator {
+.u-input[type=date]::-webkit-inner-spin-button, [type=date].selectbox_input::-webkit-inner-spin-button, .u-input[type=date]::-webkit-calendar-picker-indicator, [type=date].selectbox_input::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
   appearance: none;
 }
-.u-input[type=date]::-webkit-calendar-picker-indicator {
+.u-input[type=date]::-webkit-calendar-picker-indicator, [type=date].selectbox_input::-webkit-calendar-picker-indicator {
   background: transparent;
   bottom: 0;
   color: transparent;
@@ -1149,6 +1149,92 @@ svg,
   right: 0;
   top: 0;
   width: auto;
+}
+.u-input:disabled, .selectbox_input:disabled, .u-input.disabled, .disabled.selectbox_input {
+  pointer-events: none;
+}
+
+.selectbox_wrapper {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.selectbox_input {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+}
+.selectbox_input_label {
+  font-weight: bold;
+}
+.selectbox_input_value {
+  padding-right: 1rem;
+}
+.selectbox_input_arrow {
+  margin: 0.4rem 2rem 0 auto;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+.selectbox_input_arrow svg {
+  transition: all 0.18s;
+}
+.selectbox_list {
+  background: #D2D3BB;
+  display: none;
+  font-size: 1.6rem;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  list-style-type: none;
+  margin: -2px 0 0;
+  padding: 0.5rem 0;
+  border: solid #2C392D;
+  border-width: 2px 0 0;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 1.4rem 1.2rem -1.2rem rgba(60, 78, 62, 0.3);
+  width: 100%;
+  overflow-y: auto;
+  max-height: 160px;
+  min-width: 80px;
+  z-index: 2;
+}
+.selectbox_list_item {
+  padding-top: 0.5rem;
+  padding-right: 0.4rem;
+  padding-bottom: 0.5rem;
+  transition: all 0.18s;
+}
+.selectbox_list_item:hover {
+  text-decoration: none;
+}
+@media (min-width: 1200px) {
+  .selectbox_list_item:hover {
+    opacity: 0.6;
+  }
+}
+.selectbox_list_item.selected {
+  font-weight: bold;
+}
+.selectbox_list_item.disabled {
+  opacity: 0.5;
+}
+.selectbox_list_item.disabled:hover {
+  background-color: white;
+}
+.selectbox_open .selectbox_list {
+  display: block;
+}
+.selectbox_open .selectbox_input_arrow svg {
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+.selectbox_direction_bottom .selectbox_list {
+  margin: 0 0 -2px;
+  top: inherit;
+  bottom: 100%;
 }
 
 .u-input-code {
@@ -1215,11 +1301,11 @@ svg,
   -ms-flex-align: center;
   align-items: center;
 }
-.l-input-area__input {
+.l-input-area__input, .selectbox_wrapper, .selectbox_input {
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
-.l-input-area__input:not(:focus).is-input-error {
+.l-input-area__input:not(:focus).is-input-error, .selectbox_wrapper:not(:focus).is-input-error, .selectbox_input:not(:focus).is-input-error {
   color: #D43B31;
   border-color: rgba(212, 59, 49, 0.5);
 }
@@ -1232,8 +1318,10 @@ svg,
   color: #6A7267;
   transition: all 0.4s;
   pointer-events: none;
+  position: relative;
   -ms-flex-order: -1;
   order: -1;
+  z-index: 1;
 }
 @media (max-width: 991px) {
   .l-input-area__input-icon {
@@ -1242,7 +1330,7 @@ svg,
     margin-right: -1.6rem;
   }
 }
-.l-input-area__input:not(:focus).is-input-error ~ .l-input-area__input-icon {
+.l-input-area__input:not(:focus).is-input-error ~ .l-input-area__input-icon, .selectbox_wrapper:not(:focus).is-input-error ~ .l-input-area__input-icon, .selectbox_input:not(:focus).is-input-error ~ .l-input-area__input-icon {
   color: #D43B31;
 }
 .l-input-area__error {

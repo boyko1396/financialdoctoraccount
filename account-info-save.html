@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <title>Финансовый доктор — поможем Вам справиться с долгами и обрести финансовую свободу</title>
-    <link rel="stylesheet" href="css/account-login.css?v=34748864868"/><link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/account-login.css?v=61212513515246"/><link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
 <link rel="manifest" href="images/favicon/site.webmanifest">
@@ -109,7 +109,10 @@
                         <div class="l-input-area">
                           <label class="l-input-area__label" for="account-education">Образование</label>
                           <div class="l-input-area__input-wrapper">
-                            <input class="u-input u-input--theme-dark-light u-input--size-md u-input--icon-left l-input-area__input" type="text" name="account-education" required="required" value="Высшее" id="account-education"/>
+                            <select class="u-input u-input--theme-dark-light u-input--size-md u-input--icon-left l-input-area__input" name="account-education" required="required" data-selectbox="data-selectbox" id="account-education">
+                              <option value="Высшее" selected="selected">Высшее</option>
+                              <option value="Среднее">Среднее</option>
+                            </select>
                             <svg class="icon l-input-area__input-icon">
                               <use xlink:href="images/sprite.svg#studies"></use>
                             </svg>
@@ -140,6 +143,7 @@
       </div>
     </div>
     <script src="js/imask.min.js"></script>
+    <script src="js/selecetbox.js"></script>
     <script src="js/account.js"></script>
   </body>
 </html>

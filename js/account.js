@@ -1,23 +1,18 @@
 // btn-toggle nav mobile
-const toggle = document.querySelector('.js-header-nav-toggle');
-const headerNav = document.querySelector('.header-account__nav');
+if(document.querySelector('.js-header-nav-toggle')) {
+  const toggle = document.querySelector('.js-header-nav-toggle');
+  const headerNav = document.querySelector('.header-account__nav');
 
-toggle.addEventListener('click', () => {
-  headerNav.classList.toggle('is-show');
-});
+  toggle.addEventListener('click', () => {
+    headerNav.classList.toggle('is-show');
+  });
 
-// Додати обробник подій для документу
-document.addEventListener('click', (event) => {
-  // Перевіряємо, чи клікнуто поза toggle та headerNav
-  if (!toggle.contains(event.target) && !headerNav.contains(event.target)) {
-    headerNav.classList.remove('is-show');
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  initPhoneMasks();
-  initInputCodeHandlers();
-});
+  document.addEventListener('click', (event) => {
+    if (!toggle.contains(event.target) && !headerNav.contains(event.target)) {
+      headerNav.classList.remove('is-show');
+    }
+  });
+}
 
 // input tel/mask phone
 function initPhoneMasks() {
@@ -56,3 +51,33 @@ function initInputCodeHandlers() {
     });
   });
 }
+
+// custom select init
+function selectCastomInit() {
+  let boxes = document.querySelectorAll('[data-selectbox]');
+
+  if(boxes)
+  {
+    boxes.forEach(function(el){
+      if(el.matches('select'))
+      {
+        let _sb = new SelectBox(el, {
+          on: {
+            open: function(){
+            },
+            close: function(){
+            },
+            select: function(option){
+            }
+          }
+        });
+      }
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initPhoneMasks();
+  initInputCodeHandlers();
+  selectCastomInit();
+});
